@@ -1,0 +1,9 @@
+*.sqlite3
+*.db
+Include
+Lib
+Scripts
+tclpip-selfcheck.json
+.env
+*.pyc
+*.pyo
