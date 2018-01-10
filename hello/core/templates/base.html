@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static "img/favicon.ico" %}">
+
+    <title>Agenda</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/starter-template.css" %}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark light fixed-top" style="background-color: #17A598;">
+      <a class="navbar-brand" href="#">
+        <i class="material-icons ">event</i>
+        <b>Agenda</b>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+        </li>
+          <li class="nav-item dropdown  ">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% if user.is_authenticated %}{{ user.get_full_name|default:user.username }}{% endif %}</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="{% url 'accounts:changePassword' %}">Alterar senha</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'accounts:logoutUser'%}">Sair</a>
+
+            </div>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Tarefas <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'tarefas:listaCategorias' %}">Categorias <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="{% url 'tarefas:search'%}">
+          <input class="form-control mr-sm-2" type="text" placeholder="Procure por Tarefas" aria-label="Search" name="search">
+          <button class="btn btn-warning my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      {% block body %}
+
+
+      {% endblock body %}
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write'<script src="{% static 'js/jquery-slim.min.js' %}"><\/script>')</script>
+    <script src="{% static "js/popper.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+  </body>
+</html>

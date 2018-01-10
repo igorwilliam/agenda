@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <h1>Lista de Tarefas</h1>
+    <table class="table table-hover">
+      {% if tarefas %}
+        <thead>
+            <tr>
+              <th>Tarefa</th>
+              <th>Descrição</th>
+              <th>Data Final</th>
+              <th>Prioridade</th>
+              <th>Categoria</th>
+              <th style="text-align:center" colspan="2">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for t in tarefas  %}
+            <tr>
+              <td>{{t.nome}}</td>
+              <td>{{t.descricao}}</td>
+              <td>{{t.dataFinal}}</td>
+              <td>{{t.get_prioridade_display}}</td>
+              <td>{{t.categoria}}</td>
+              <td><a href="{% url 'tarefas:editarTarefa' t.id %}" class="btn btn-outline-secondary btn-sm">Editar</a></td>
+              <td><a href="{% url 'tarefas:deleteTarefa' t.id %}" class="btn btn-outline-danger btn-sm">Excluir</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+      <div class="alert alert-info">
+        <p>Não Há Tarefas Cadastradas</p>
+      </div>
+    {% endif %}
+
+    <a href="{% url 'tarefas:novaTarefa' %}" class="btn btn-outline-info">Adicionar Tarefa</a>
+
+  </div>
+
+{% endblock body %}

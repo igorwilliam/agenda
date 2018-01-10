@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1>Resultado da Busca</h2>
+    {% if result %}
+      {% for r in result %}
+        <a href="{% url 'tarefas:detalhesTarefa' r.id %}"><h2>{{r.nome}}</h2></a>
+      {% endfor %}
+      {% else %}
+      <div class="alert alert-info">
+          <p>Nenhuma Tarefa Encontrada</p>
+      </div>
+    {% endif %}
+{% endblock %}
