@@ -3,7 +3,8 @@
 Include
 Lib
 Scripts
-tclpip-selfcheck.json
+tcl
+pip-selfcheck.json
 .env
 *.pyc
 *.pyo
