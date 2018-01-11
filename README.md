@@ -1,1 +1,1 @@
-Projeto de Exercicio
+Projeto Django de Exercício 
