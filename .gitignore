@@ -6,5 +6,3 @@ Scripts
 tcl
 pip-selfcheck.json
 .env
-*.pyc
-*.pyo
